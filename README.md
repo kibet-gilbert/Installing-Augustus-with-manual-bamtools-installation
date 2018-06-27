@@ -3,7 +3,6 @@
 This workflow is adapted from the description provided in https://iamphioxus.org/2017/05/08/installing-augustus-with-manual-bamtools-installation/
 
 This is a step by step guide on how to install latest version of Installing Augustus  3.3.1 (with manual bamtools installation).
-
 AUGUSTUS is an open source tool that predicts genes in eukaryotic genomic sequences.
 For more information go to : http://bioinf.uni-greifswald.de/augustus/
 
