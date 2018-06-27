@@ -88,6 +88,8 @@ LIBS = -lbamtools -lz
 By:
 LIBS = $(BAMTOOLS)/lib/libbamtools.a -lz
 
+To save and go back to terminal use (in command mode by esc key) ":wq"
+
 Congratulations!!! 
 You are finally ready to compile Augustus. Get back to the “augustus-3.3.1” directory and type “make”
 
