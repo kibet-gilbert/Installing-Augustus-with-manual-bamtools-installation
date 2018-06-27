@@ -47,8 +47,6 @@ In this case we will use VIm (Vi Improved)
 ```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
 vim Makefile
 ```
-Add:
-BAMTOOLS = /your/path/to/bamtools
 
 Replace:
 INCLUDES = /usr/include/bamtools
