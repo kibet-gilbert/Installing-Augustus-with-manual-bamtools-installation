@@ -64,7 +64,7 @@ To save and go back to terminal use (in command mode by esc key) ":wq"
 
 Go to the “augustus-3.3.1/auxprogs/filterBam/src” directory and make the following changes for the Makefile:
 ```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-cd auxprogs/filterBam/src
+cd ~/augustus-3.3.1/auxprogsauxprogs/filterBam/src
 ```
 
 Open the the Makefile in a txt editor of your choice.
