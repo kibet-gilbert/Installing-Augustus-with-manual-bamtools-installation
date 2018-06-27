@@ -74,11 +74,6 @@ vim Makefile
 ```
 
 Replace:
-BAMTOOLS = /usr/include/bamtools
-By:
-BAMTOOLS = /your/path/to/bamtools
-
-Replace:
 INCLUDES = -I$(BAMTOOLS) -Iheaders -I./bamtools
 By:
 INCLUDES = -I$(BAMTOOLS)/include -Iheaders -I./bamtools
