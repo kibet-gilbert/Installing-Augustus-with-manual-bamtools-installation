@@ -11,6 +11,7 @@ Augustus auxiliary tools, bam2hints and filterBam, depend on the pre-installatio
 ## **Installing bamtools**
 
 The first installation step is installation bamtools
+For more go to :https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
 ```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
 sudo apt-get install bamtools libbamtools-dev
 ```
