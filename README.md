@@ -24,7 +24,7 @@ cmake ..
 make
 ```
 
-##**Downloading and installing Augustus**
+## **Downloading and installing Augustus**
 
 Augustus source files can be found on http://bioinf.uni-greifswald.de/augustus/binaries/
 N/B : CHECK THE LATEST VERSION OF AUGUSTUS TO INSTALL (only change the versions if need be)
@@ -34,7 +34,7 @@ tar xvzf augustus-3.3.1.tar.gz
 cd augustus-3.3.1
 make
 ```
-##**Adapting bam2hints and filterBam**
+## **Adapting bam2hints and filterBam**
 
 You need to modify the Makefiles of bam2hints and filterBam to adapt them to your manually installed bamtools as follows:
 Go to the “augustus-3.2.3/auxprogs/bam2hints” directory and make the following changes for the Makefile as follows:
@@ -89,3 +89,8 @@ LIBS = $(BAMTOOLS)/lib/libbamtools.a -lz
 
 Congratulations!!! 
 You are finally ready to compile Augustus. Get back to the “augustus-3.3.1” directory and type “make”
+
+## **References**
+http://bioinf.uni-greifswald.de/augustus/
+https://iamphioxus.org/2017/05/08/installing-augustus-with-manual-bamtools-installation/
+https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
