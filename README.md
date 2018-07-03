@@ -8,80 +8,63 @@ For more information go to : http://bioinf.uni-greifswald.de/augustus/
 
 Augustus auxiliary tools, bam2hints and filterBam, depend on the pre-installation of bamtools with proper library path configured.
 
-## **Installing bamtools**
+## **Installing Dependancies**
 
 The first installation step is installation bamtools
 For more go to :https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
 ```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
+sudo apt-get install libboost-iostreams-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install libgsl-dev
+sudo apt-get install libmysql++-dev
+sudo apt-get install libsqlite3-dev
+sudo apt-get install libboost-graph-dev
+sudo apt-get install libsuitesparse-dev liblpsolve55-dev
 sudo apt-get install bamtools libbamtools-dev
+
 ```
-If working with on a shared server (like a cluster) and we do not have the root permission,
-install bamtools under our local directory as follows:
+
+## Downloading and installing samtools ##
+Install these tools in your home directory as follows:
 ```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-git clone git://github.com/pezmaster31/bamtools.git
-mkdir build
-cd build
-cmake ..
+git clone https://github.com/samtools/htslib.git
+  cd htslib
+  autoheader
+  autoconf
+  ./configure
+  make
+  sudo make install
+  cd ..
+  
+ git clone https://github.com/samtools/bcftools.git
+  cd bcftools
+  autoheader
+  autoconf 
+  ./configure
+  make
+  sudo make install
+  cd ..
+
+git clone https://github.com/samtools/tabix.git
+  cd tabix
+  make
+  cd ..
+  
+git clone https://github.com/samtools/samtools.git
+  cd samtools
+  autoheader
+  autoconf -Wno-syntax
+  ./configure
+  make
+  sudo make install
+  cd ..
+```
+
+When that is done,proceed with installation of augustus:
+```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
+cd augustus<version>
 make
 ```
-
-## **Downloading and installing Augustus**
-
-Augustus source files can be found on http://bioinf.uni-greifswald.de/augustus/binaries/
-N/B : CHECK THE LATEST VERSION OF AUGUSTUS TO INSTALL (only change the versions if need be)
-```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.3.1.tar.gz
-tar xvzf augustus-3.3.1.tar.gz
-cd augustus-3.3.1
-make
-```
-## **Adapting bam2hints and filterBam**
-
-You need to modify the Makefiles of bam2hints and filterBam to adapt them to your manually installed bamtools as follows:
-Go to the “augustus-3.2.3/auxprogs/bam2hints” directory and make the following changes for the Makefile as follows:
-```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-cd auxprogs/bam2hints
-```
-Open the the Makefile in a txt editor of your choice.
-In this case we will use VIm (Vi Improved)
-```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-vim Makefile
-```
-
-Replace:
-INCLUDES = /usr/include/bamtools
-By:
-INCLUDES = $(BAMTOOLS)/include
-
-Replace:
-LIBS = -lbamtools -lz
-By:
-LIBS = $(BAMTOOLS)/lib/libbamtools.a -lz
-
-To save and go back to terminal use (in command mode by esc key) ":wq"
-
-Go to the “augustus-3.3.1/auxprogs/filterBam/src” directory and make the following changes for the Makefile:
-```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-cd ~/augustus-3.3.1/auxprogs/filterBam/src
-```
-
-Open the the Makefile in a txt editor of your choice.
-In this case we will use VIm (Vi Improved)
-```{r,eval=FALSE,error=FALSE,warning=FALSE,message=FALSE,echo=TRUE}
-vim Makefile
-```
-
-Replace:
-INCLUDES = -I$(BAMTOOLS) -Iheaders -I./bamtools
-By:
-INCLUDES = -I$(BAMTOOLS)/include -Iheaders -I./bamtools
-
-Replace:
-LIBS = -lbamtools -lz
-By:
-LIBS = $(BAMTOOLS)/lib/libbamtools.a -lz
-
-To save and go back to terminal use (in command mode by esc key) ":wq"
 
 Congratulations!!! 
 You are finally ready to compile Augustus. Get back to the “augustus-3.3.1” directory and type “make”
